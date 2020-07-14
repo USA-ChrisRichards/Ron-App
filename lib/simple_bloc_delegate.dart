@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 
-class SimpleBlocDelegate extends BlocDelegate {
+class SimpleBlocDelegate extends BlocObserver {
+  // Bloc 5.0 remove BlocDelegate for BlocObserver
   @override
   void onEvent(Bloc bloc, Object event) {
     print('onEvent $event');
