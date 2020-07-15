@@ -16,7 +16,7 @@ class Quote extends StatelessWidget {
               final quote = await Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => QuoteSelection(),
+                  builder: (context) => Text('quote here'),
                 ),
               );
               if (quote != null) {
@@ -48,7 +48,7 @@ class Quote extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 100.0),
                     child: Center(
-                      child: QuoteGenerated(quote: quote),
+                      child: Text('$quote'),
                     ),
                   ),
                 ],

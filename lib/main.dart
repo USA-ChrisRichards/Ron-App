@@ -3,6 +3,7 @@ import 'package:ron_app/blocs/blocs.dart';
 import 'package:ron_app/repositories/repositories.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:ron_app/widgets/widgets.dart';
 
 void main() {
   final QuoteRepository quoteRepository = QuoteRepository(
