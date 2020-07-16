@@ -23,4 +23,4 @@ class QuoteLoadSuccess extends QuoteState {
   List<Object> get props => [quote];
 }
 
-class WeatherLoadFailure extends QuoteState {}
+class QuoteLoadFailure extends QuoteState {}

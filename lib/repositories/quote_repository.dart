@@ -9,8 +9,8 @@ class QuoteRepository {
   QuoteRepository({@required this.quoteApiClient})
       : assert(quoteApiClient != null);
 
-  Future<Quote> getQuote(String quote) async {
-    // final String quote = await quoteApiClient.getRandomQuoteContent();
-    return quoteApiClient.fetchQuote();
+  Future<Quote> getQuote() async {
+    final q = await quoteApiClient.fetchQuote();
+    return q;
   }
 }
