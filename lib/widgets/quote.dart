@@ -12,6 +12,8 @@ class Quote extends StatelessWidget {
     return Center(
       child: BlocBuilder<QuoteBloc, QuoteState>(
         builder: (context, state) {
+          var s = state;
+
           if (state is QuoteInitial) {
             return Center(
               child: Text('state is quoteInitial'),
@@ -25,14 +27,27 @@ class Quote extends StatelessWidget {
           if (state is QuoteLoadSuccess) {
             return Column(
               children: [
-                Text('state is QuoteLoadSuccess'),
+                Text('state is QuoteLoadSuccess $state'),
+              ],
+            );
+          } else {
+            return Column(
+              children: [
                 IconButton(
+                  iconSize: 100,
                   icon: Icon(Icons.format_quote),
                   onPressed: () async {
                     final quote = await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Text('quote'),
+                        builder: (context) => Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Text('state = $state'),
+                            ],
+                          ),
+                        ),
                       ),
                     );
                     if (quote != null) {
@@ -45,7 +60,6 @@ class Quote extends StatelessWidget {
               ],
             );
           }
-          return Text('state = $state / quote repo = $quoteRepository');
         },
       ),
     );

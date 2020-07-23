@@ -19,7 +19,7 @@ class QuoteBloc extends Bloc<QuoteEvent, QuoteState> {
 
   @override
   Stream<QuoteState> mapEventToState(QuoteEvent event) async* {
-    if (event is QuoteInitial) {
+    if (event is QuoteRequested) {
       yield QuoteLoadInProgress();
       try {
         final Quote quote = await quoteRepository.getQuote();

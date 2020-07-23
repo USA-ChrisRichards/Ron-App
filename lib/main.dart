@@ -3,11 +3,11 @@ import 'package:ron_app/blocs/blocs.dart';
 import 'package:ron_app/repositories/repositories.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:ron_app/simple_bloc_delegate.dart';
+import 'package:ron_app/simple_bloc_observer.dart';
 import 'package:ron_app/widgets/widgets.dart';
 
 void main() {
-  SimpleBlocDelegate();
+  Bloc.observer = SimpleBlocObserver();
   //Bloc 5.0 remove BlocSupervisor
 
   final QuoteRepository quoteRepository = QuoteRepository(
@@ -46,9 +46,18 @@ class App extends StatelessWidget {
                     onPressed: null)
               ],
             ),
-            body: Container(
-              color: Colors.brown[100],
-              child: Quote(),
+            body: Stack(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/ron_background.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Quote(),
+              ],
             ),
           ),
         ));
