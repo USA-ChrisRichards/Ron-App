@@ -1,22 +1,19 @@
 import 'package:equatable/equatable.dart';
 
 class Quote extends Equatable {
-  final String content;
+  final String quote;
 
-  const Quote({this.content});
+  const Quote({this.quote});
 
   @override
-  List<Object> get props => [content];
+  List<Object> get props => [quote];
 
   static Quote fromJson(dynamic json) {
-    return Quote(content: _mapStringToContent(json));
+    return Quote(
+      quote: json[0],
+    );
   }
 
-  static _mapStringToContent(String input) {
-    if (input is String) {
-      return input;
-    } else {
-      return '404 error, API call failed';
-    }
-  }
+  @override
+  String toString() => 'Quote { quote: $quote }';
 }

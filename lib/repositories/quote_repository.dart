@@ -10,7 +10,6 @@ class QuoteRepository {
       : assert(quoteApiClient != null);
 
   Future<Quote> getQuote() async {
-    final q = await quoteApiClient.fetchQuote();
-    return q;
+    return await quoteApiClient.fetchQuote();
   }
 }

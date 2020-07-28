@@ -16,7 +16,11 @@ void main() {
     ),
   );
 
-  runApp(App(quoteRepository: quoteRepository));
+  runApp(
+    App(
+      quoteRepository: quoteRepository,
+    ),
+  );
 }
 
 class App extends StatelessWidget {
@@ -29,37 +33,38 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Ron App',
-        home: BlocProvider(
+      title: 'Ron App',
+      home: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('Ron App'),
+          backgroundColor: Colors.brown[600],
+          actions: <Widget>[
+            IconButton(
+                icon: Icon(
+                  Icons.info_outline,
+                  color: Colors.white,
+                ),
+                onPressed: null)
+          ],
+        ),
+        body: BlocProvider(
           create: (context) => QuoteBloc(quoteRepository: quoteRepository),
-          child: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              title: Text('Ron App'),
-              backgroundColor: Colors.brown[600],
-              actions: <Widget>[
-                IconButton(
-                    icon: Icon(
-                      Icons.info_outline,
-                      color: Colors.white,
-                    ),
-                    onPressed: null)
-              ],
-            ),
-            body: Stack(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/ron_background.jpg'),
-                      fit: BoxFit.cover,
-                    ),
+          child: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/ron background.jpg'),
+                    fit: BoxFit.cover,
                   ),
                 ),
-                Quote(),
-              ],
-            ),
+              ),
+              Quote(),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
